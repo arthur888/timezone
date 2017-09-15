@@ -1,0 +1,337 @@
+body, html {
+	height: 100%;
+
+}
+#root, #root > [data-reactroot] {
+	height: 100%;
+}
+.full-height {
+	height: 100%;
+}
+
+.page-header {
+	align-items: center;
+	display: flex;
+}
+.page-header .title {
+	padding: 18px 25px;
+}
+.page-header .title img {
+	max-height: 30px;
+}
+
+.cities-side {
+	border: 1px solid #ddd;
+	padding: 5px 15px 15px;
+}
+.search-box {
+	position: relative;
+}
+.search-box .preloader {
+	position: absolute;
+	right: 8px;
+	top: 6px;
+	z-index: 99;
+	width: 25px;
+	height: auto;
+}
+.search-box .input-group-addon {
+	border-radius: 0;
+	background-color: #fff;
+	border-right: 0;
+	padding-right: 3px;
+	transition: all 0.3s ease;
+}
+.search-box .input-group-addon.active {
+	border: 1px solid #5cb3fd;
+	border-right: 0;
+}
+.search-box .form-control {
+	border-radius: 0;
+	font-family: 'Roboto';
+	font-weight: 300;
+	border-left: 0;
+}
+.search-box.input-group .input-group-addon ~ div {
+	display: flex;
+	flex-grow: 1;
+}
+.search-box {
+	margin-bottom: 10px;
+}
+
+.leaflet-container {
+    height: 100%;
+    width: 100%;
+}
+
+.search-results {
+
+}
+.search-results .results-heading {
+	font-weight: 300;
+	font-size: 16px;
+}
+.search-results .search-results-items {
+	max-height: calc(100vh - 100px);
+	overflow-y: auto;
+	margin-top: 8px;
+}
+.search-results .search-results-items .result-single {
+	display: flex;
+	font-size: 16px;
+	font-weight: 300;
+	padding: 6px 10px;
+	border: 1px solid #eee;
+	margin-bottom: -1px;
+}
+.search-results .search-results-items .result-single .remove {
+	color: orange;
+	margin-left: auto;
+}
+
+.times-list {
+	height: calc(100vh - 110px);
+	overflow-y: auto;
+}
+.times-list .add-more{
+	font-weight: 100;
+	text-align: center;
+	font-size: 60px;
+	border: 2px dashed #ccc;
+	padding:80px 0;
+	cursor: pointer;
+	transition: all 0.3s ease-out;
+	background-color: #fff;
+}
+.times-list .add-more:hover {
+	border-color: #7FB543;
+	color: #7FB543;
+}
+
+.top-right-close {
+	text-align: right;
+	font-size: 18px;
+	font-weight: 100;
+}
+
+    h1.citytitle {
+    text-align: center;
+   font-size: 39px;
+    padding-right: 4px;
+   
+    font-weight: 400; 
+    margin-top: 10px;
+    margin-bottom: 24px;
+}
+
+.leaflet-tooltip {
+	padding: 4px 15px;
+}
+.leaflet-tooltip-bottom:after, .leaflet-tooltip-top:after {
+
+}
+@media screen and (min-width: 768px) {
+	.cities-side {
+		position: absolute;
+		right: 0;
+		top: 0px;
+		z-index: 9999;
+		background-color: #eee;
+		height: 100%;
+		min-width: 300px;
+	}
+	.times-list {
+		height: calc(100vh - 90px) !important;
+	}
+	.map-side {
+		height: calc(100% - 66px);
+	}
+}
+@media screen and (width: 1024px) {
+	.times-list {
+		height: calc(100vh - 140px) !important;
+	}
+	.city-search-results {
+		height: calc(100vh - 140px) !important;
+	}
+}
+@media screen and (max-width: 576px) {
+	.page-header {
+		justify-content: center;
+	}
+	.side-ad {
+		display: none;
+	}
+}
+@media screen and (min-width: 576px) and (orientation: landscape) {
+	.cities-side .side-ad {
+		display: none;
+	}
+}
+@media screen and (max-width: 768px) {
+	.page-header .title {
+		padding: 10px 10px;
+	}
+	.page-header .title img {
+		max-height: 30px;
+	}
+	.cities-side {
+		margin-top: 0;
+		top: 50px;
+	}
+	.cities-side .top-right-close {
+		position: absolute;
+		top: 20px;
+		right: 15px;
+		transform: translateX(0) !important;
+	}
+	.cities-side.hide-sidebar .top-right-close {
+		position: absolute;
+		top: 20px;
+		left: 20px;
+		right: 0;
+	}
+	.search-box {
+		margin-bottom: 5px;
+		padding: 0 0px;
+	}
+	.cities-side {
+		border: 0;
+	}
+	.cities-side .times-list {
+		height: calc(100vh - 168px) !important;
+	}
+	.cities-side .city-search-results {
+		height: calc(100vh - 210px) !important;
+	}
+	.map-side {
+		height: calc(100vh - 110px);
+	}
+}
+
+.tooltip {
+    z-index: 9999;
+}
+@media screen and (min-width: 768px) {
+    .cities-side {
+        height: calc(100vh - 55px);
+    }
+}
+
+@media screen and (min-width: 576px) {
+	.header-ad {
+		margin-left: auto;
+	}
+	.header-ad > div {
+		max-width: 400px !important;
+		max-height: 80px !important;
+		margin: 0 !important;
+		overflow: hidden;
+	}
+}
+@media screen and (max-width: 575px) {
+	.header-ad {
+		display: none;
+	}
+	.cities-side {
+    border: 1px solid #ddd;
+    padding: 4px 15px 0px !important;
+}
+
+.map-side {
+    display: none;
+}
+.side-ad-mobile div
+{
+  
+   margin-bottom: 0px !important;
+   
+    padding: 0px !important;
+
+}
+}
+.scrolling-cities-widget .scroll-btn {
+    color: #fff !important; 
+    background: #72ad5c;
+}  
+ 
+.top-background-image-container:after {
+  content: '';
+  display: block;
+  position: absolute;
+  z-index: 2;
+}
+.top-background-image-container.container-fluid {padding: 0;}
+@media screen and(min-width: 1024){
+
+}
+
+@media only screen and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+{
+    
+	.timewidg {
+    margin-top: 32% !important;
+}
+}
+@media only screen and (max-width: 500px) {h1.citytitle {font-size: 30px !important;}}
+
+#customtextblock
+{
+	margin-top: 34px;
+    float: left;
+}
+
+
+    .side-ad
+    {
+       display:none !important;
+
+    }
+.over_lay { background: rgba(255, 255, 255, 0.5) none repeat scroll 0 0;height: 100%;padding: 0 15px 50px;position: absolute;width: 100%;}
+@media only screen and (max-width:500px){h1.citytitle{font-size:30px!important}}#customtextblock{margin-top:34px;float:left}.side-ad{display:none!important}.over_lay{background:hsla(0,0%,100%,.5) none repeat scroll 0 0;height:100%;padding:0 15px 50px;position:absolute;width:100%}
+.what-time-block {
+    background-color: #f5f5f5 !important;
+    padding: 60px 0 0;
+}
+#customtextblock {
+    margin-top: 2px;
+    float: left;
+    padding: 42px 3px 0 42px;
+    background: #fff;
+    font-size: 16px;
+    text-align: justify;}
+@media only screen and (max-width:1440px){
+ .widget-main-time
+ {
+ 	margin-top:47px;
+ }
+
+}
+.what-time-customblock
+{
+    padding: 60px 0 63px;
+    background: #fff;
+} 
+
+@media only screen  and (max-width: 1600)
+{
+	.widget-main-time {
+    margin-top: 4.8%;
+}
+
+}
+
+#timewidget
+{
+
+  position: relative;
+  top: 40%;
+  transform: translateY(-50%);
+  margin-bottom: 5%;
+}
+
+
+
+

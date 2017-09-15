@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" id="keywords" content="Weather, Timezone, Time, Current Time, Compare time" />
+    <meta name="description" id="description" content="What time is it in world, country, city, timezone" />
+
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500" rel="stylesheet"> 
+    <!--
+      Notice the use of %PUBLIC_URL% in the tag above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>Timefinder – What time is it?</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start`.
+      To create a production bundle, use `npm run build`.
+    -->
+    <script type="text/javascript" src="/papaparse.min.js"></script>
+    <script type="text/javascript">
+      (function(history){
+          var pushState = history.pushState;
+          history.pushState = function(state) {
+              if (typeof history.onpushstate == "function") {
+                  history.onpushstate({state: state});
+              }
+              // ... whatever else you want to do
+              // maybe call onhashchange e.handler
+              return pushState.apply(history, arguments);
+          }
+      })(window.history);
+
+      window.onpopstate = history.onpushstate = function(e) { 
+        getMetaTags();
+      }
+      var original_keywords = document.getElementById('keywords').getAttribute('content');
+      var original_description = document.getElementById('description').getAttribute('content');
+      var textblock = '';
+
+      function getMetaTags() {
+        var found = false;
+        Papa.parse('/meta-descriptions.csv', {
+          download: true,
+          header: true,
+          worker: true,
+          step: function(row) {
+            if(row.data[0].url === window.location.pathname) {
+              document.getElementById('keywords').setAttribute('content', row.data[0].keywords);
+              document.getElementById('description').setAttribute('content', row.data[0].description);
+              textblock = row.data[0].textblock;
+              document
+              found = true;
+            }
+          },
+          complete: function() {
+            //console.log("All done!");
+            if(found === false) {
+              document.getElementById('keywords').setAttribute('content', original_keywords);
+              document.getElementById('description').setAttribute('content', original_description);
+              textblock = '';
+            }
+          }
+          // rest of config ...
+        });
+      }
+      window.onload = function(){
+        getMetaTags();
+      }
+    </script>
+  </body>
+</html>
